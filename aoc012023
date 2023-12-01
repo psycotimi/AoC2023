@@ -1,0 +1,35 @@
+# muuttujat, jonne tallennetaan koko tulos ja myös joka rivin eka ja vika numero
+tulos = 0
+eka = 0
+toka = 0
+calibvalue = ''
+onkoEka = True
+
+# avataan tiedosto ja luetaan se rivi riviltä
+file = open('input1.txt', 'r')
+while True:
+    line = file.readline()
+    line = line.replace("two", "t2o")
+    line = line.replace("one", "o1e")
+    line = line.replace("three", "t3e")
+    line = line.replace("four", "4")
+    line = line.replace("five", "5e")
+    line = line.replace("six", "6")
+    line = line.replace("seven", "7n")
+    line = line.replace("nine", "n9e")
+    line = line.replace("eight", "e8t")
+    for char in line:
+        if char.isnumeric():
+            if onkoEka == True:
+                eka = char
+                toka = char
+                onkoEka = False
+            else:
+                toka = char
+    onkoEka = True
+    calibvalue = eka + toka
+    tulos += int(calibvalue)
+
+    if not line:
+        break
+    print(tulos, line, eka, toka, calibvalue)
